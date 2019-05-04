@@ -1,7 +1,7 @@
 ﻿#include "pch.h"
 #include <iostream>
 
-bool find(int* matrix, int rows, int columns, int number)
+bool findDuplication(int* matrix, int rows, int columns, int number)
 {
 	if (matrix == nullptr || rows <= 0 || columns <= 0)
 	{
@@ -58,7 +58,7 @@ void Test(const char* testName, int* matrix, int rows, int columns, int number, 
 	if (testName != nullptr)
 		printf("%s begins: ", testName);
 
-	bool result = find(matrix, rows, columns, number);
+	bool result = findDuplication(matrix, rows, columns, number);
 	if (result == expected)
 		printf("Passed.\n");
 	else
