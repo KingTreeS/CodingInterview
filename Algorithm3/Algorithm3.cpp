@@ -110,6 +110,44 @@ bool hashFind(int num[], int len, int* duplication)
 	return false;
 }
 
+//思路三：利用题目特性，时间复杂度O(n)，空间复杂度O(1)
+bool swapFind(int num[], int len, int* duplication)
+{
+	if (num == nullptr || len <= 0)
+	{
+		return false;
+	}
+
+	for (int i = 0; i < len; i++)
+	{
+		if (num[i] < 0 || num[i] > len - 1)
+		{
+			return false;
+		}
+	}
+
+	for (int i = 0; i < len; i++)
+	{
+		int flag = num[i];
+		while (flag != i)
+		{
+			if (num[i] == num[flag])
+			{
+				*duplication = num[i];
+				return true;
+			}
+
+			int temp = num[i];
+			num[i] = num[flag];
+			num[flag] = temp;
+
+			flag = num[i];
+		}
+	}
+
+	return false;
+}
+
 
 // ====================测试代码====================
 bool contains(int array[], int length, int number)
@@ -131,7 +169,8 @@ void test(const char* testName, int numbers[], int lengthNumbers, int expected[]
 	int duplication;
 
 	//bool validInput = sortFind(HEAP, numbers, lengthNumbers, &duplication);
-	bool validInput = hashFind(numbers, lengthNumbers, &duplication);
+	//bool validInput = hashFind(numbers, lengthNumbers, &duplication);
+	bool validInput = swapFind(numbers, lengthNumbers, &duplication);
 
 	if (validArgument == validInput)
 	{
