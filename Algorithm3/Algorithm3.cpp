@@ -3,6 +3,7 @@
 #include <map>
 #include "Sort.h"
 
+//3.1
 //思路一：先对数组进行排序，然后从前往后扫描，查找第一个重复的数字
 //时间复杂度：O(nlogn)
 enum SortInfo
@@ -149,6 +150,64 @@ bool swapFind(int num[], int len, int* duplication)
 }
 
 
+//3.2
+//采用二分查找的思路，用时间换空间
+int count(const int num[], int len, int start, int end)
+{
+	int count = 0;
+	for (int i = 0; i < len; i++)
+	{
+		if (num[i] >= start && num[i] <= end)
+		{
+			count++;
+		}
+	}
+	return count;
+}
+
+int getDuplication(const int num[], int len)
+{
+	if (num == nullptr || len <= 0)
+	{
+		return -1;
+	}
+
+	int start = 1;
+	int end = len - 1;
+
+	while (end >= start)
+	{
+		int mid = (end - start) / 2 + start;
+
+		int countNum = count(num, len, start, mid);
+		if (end == start)
+		{
+			if (countNum > 1)
+			{
+				return start;
+			}
+			else
+			{
+				break;
+			}
+		}
+
+		if (countNum > (mid - start + 1))
+		{
+			end = mid;
+		}
+		else
+		{
+			start = mid + 1;
+		}
+	}
+
+	return -1;
+
+}
+
+
+//3.1
 // ====================测试代码====================
 bool contains(int array[], int length, int number)
 {
@@ -238,14 +297,116 @@ void test6()
 	test("Test6", numbers, 0, duplications, sizeof(duplications) / sizeof(int), false);
 }
 
+
+//3.2
+// ====================测试代码====================
+void noedit_test(const char* testName, int* numbers, int length, int* duplications, int dupLength)
+{
+	int result = getDuplication(numbers, length);
+	for (int i = 0; i < dupLength; ++i)
+	{
+		if (result == duplications[i])
+		{
+			std::cout << testName << " PASSED." << std::endl;
+			return;
+		}
+	}
+	std::cout << testName << " FAILED." << std::endl;
+}
+// 多个重复的数字
+void noedit_test1()
+{
+	int numbers[] = { 2, 3, 5, 4, 3, 2, 6, 7 };
+	int duplications[] = { 2, 3 };
+	noedit_test("test1", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int));
+}
+// 一个重复的数字
+void noedit_test2()
+{
+	int numbers[] = { 3, 2, 1, 4, 4, 5, 6, 7 };
+	int duplications[] = { 4 };
+	noedit_test("test2", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int));
+}
+// 重复的数字是数组中最小的数字
+void noedit_test3()
+{
+	int numbers[] = { 1, 2, 3, 4, 5, 6, 7, 1, 8 };
+	int duplications[] = { 1 };
+	noedit_test("test3", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int));
+}
+// 重复的数字是数组中最大的数字
+void noedit_test4()
+{
+	int numbers[] = { 1, 7, 3, 4, 5, 6, 8, 2, 8 };
+	int duplications[] = { 8 };
+	noedit_test("test4", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int));
+}
+// 数组中只有两个数字
+void noedit_test5()
+{
+	int numbers[] = { 1, 1 };
+	int duplications[] = { 1 };
+	noedit_test("test5", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int));
+}
+// 重复的数字位于数组当中
+void noedit_test6()
+{
+	int numbers[] = { 3, 2, 1, 3, 4, 5, 6, 7 };
+	int duplications[] = { 3 };
+	noedit_test("test6", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int));
+}
+// 多个重复的数字
+void noedit_test7()
+{
+	int numbers[] = { 1, 2, 2, 6, 4, 5, 6 };
+	int duplications[] = { 2, 6 };
+	noedit_test("test7", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int));
+}
+// 一个数字重复三次
+void noedit_test8()
+{
+	int numbers[] = { 1, 2, 2, 6, 4, 5, 2 };
+	int duplications[] = { 2 };
+	noedit_test("test8", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int));
+}
+// 没有重复的数字
+void noedit_test9()
+{
+	int numbers[] = { 1, 2, 6, 4, 5, 3 };
+	int duplications[] = { -1 };
+	noedit_test("test9", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int));
+}
+// 无效的输入
+void noedit_test10()
+{
+	int* numbers = nullptr;
+	int duplications[] = { -1 };
+	noedit_test("test10", numbers, 0, duplications, sizeof(duplications) / sizeof(int));
+}
+
 int main()
 {
+	//test for 3.1
+	std::cout << "Test for 3.1:" << std::endl;
 	test1();
 	test2();
 	test3();
 	test4();
 	test5();
 	test6();
+
+	//test for 3.2
+	std::cout << "Test for 3.2:" << std::endl;
+	noedit_test1();
+	noedit_test2();
+	noedit_test3();
+	noedit_test4();
+	noedit_test5();
+	noedit_test6();
+	noedit_test7();
+	noedit_test8();
+	noedit_test9();
+	noedit_test10();
 
 	return 0;
 }
