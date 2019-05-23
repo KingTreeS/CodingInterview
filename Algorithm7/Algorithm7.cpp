@@ -188,7 +188,7 @@ void Test4()
 //           /     \
 //          2       3  
 //         / \     / \
-//        4   5   6   7
+//        4   5   6   7 
 void Test5()
 {
 	const int length = 7;
