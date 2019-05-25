@@ -33,6 +33,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Algorithm13", "Algorithm13\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Algorithm14", "Algorithm14\Algorithm14.vcxproj", "{878E47F5-68D1-4E7F-B7A2-5C41661FE842}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Algorithm15", "Algorithm15\Algorithm15.vcxproj", "{B99858D2-0B12-4E6B-BE28-C065D9577E3E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -161,6 +163,14 @@ Global
 		{878E47F5-68D1-4E7F-B7A2-5C41661FE842}.Release|x64.Build.0 = Release|x64
 		{878E47F5-68D1-4E7F-B7A2-5C41661FE842}.Release|x86.ActiveCfg = Release|Win32
 		{878E47F5-68D1-4E7F-B7A2-5C41661FE842}.Release|x86.Build.0 = Release|Win32
+		{B99858D2-0B12-4E6B-BE28-C065D9577E3E}.Debug|x64.ActiveCfg = Debug|x64
+		{B99858D2-0B12-4E6B-BE28-C065D9577E3E}.Debug|x64.Build.0 = Debug|x64
+		{B99858D2-0B12-4E6B-BE28-C065D9577E3E}.Debug|x86.ActiveCfg = Debug|Win32
+		{B99858D2-0B12-4E6B-BE28-C065D9577E3E}.Debug|x86.Build.0 = Debug|Win32
+		{B99858D2-0B12-4E6B-BE28-C065D9577E3E}.Release|x64.ActiveCfg = Release|x64
+		{B99858D2-0B12-4E6B-BE28-C065D9577E3E}.Release|x64.Build.0 = Release|x64
+		{B99858D2-0B12-4E6B-BE28-C065D9577E3E}.Release|x86.ActiveCfg = Release|Win32
+		{B99858D2-0B12-4E6B-BE28-C065D9577E3E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
