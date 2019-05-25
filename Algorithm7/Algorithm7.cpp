@@ -121,6 +121,7 @@ void Test(const char* testName, int* preorder, int* inorder, int length)
 		printf("Invalid Input.\n");
 	}
 }
+
 // 普通二叉树
 //              1
 //           /     \
@@ -137,6 +138,7 @@ void Test1()
 
 	Test("Test1", preorder, inorder, length);
 }
+
 // 所有结点都没有右子结点
 //            1
 //           / 
@@ -155,6 +157,7 @@ void Test2()
 
 	Test("Test2", preorder, inorder, length);
 }
+
 // 所有结点都没有左子结点
 //            1
 //             \ 
@@ -173,6 +176,7 @@ void Test3()
 
 	Test("Test3", preorder, inorder, length);
 }
+
 // 树中只有一个结点
 void Test4()
 {
@@ -197,11 +201,13 @@ void Test5()
 
 	Test("Test5", preorder, inorder, length);
 }
+
 // 输入空指针
 void Test6()
 {
 	Test("Test6", nullptr, nullptr, 0);
 }
+
 // 输入的两个序列不匹配
 void Test7()
 {
