@@ -63,12 +63,6 @@ void FindPathCore(int expectedSum, std::deque<BinaryTreeNode*>& m_deque)
 		return;
 	}
 
-	if (pNode->m_pLeft == nullptr && pNode->m_pRight == nullptr && expectedSum != pNode->m_nValue)
-	{
-		m_deque.pop_back();
-		return;
-	}
-
 	if (pNode->m_nValue <= expectedSum)
 	{
 		expectedSum -= pNode->m_nValue;
